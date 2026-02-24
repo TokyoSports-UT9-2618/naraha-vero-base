@@ -1,0 +1,295 @@
+---
+const day1 = [
+  { time: '08:00', title: '開場・受付開始', desc: 'テントサイト設営も可', icon: '🚪' },
+  { time: '09:00', title: 'オープニングセレモニー', desc: '主催者挨拶・ゲスト紹介', icon: '🎙️' },
+  { time: '09:30', title: 'ツールド福島 スタート', desc: 'レース観戦エリアへ', icon: '🚴' },
+  { time: '10:00', title: 'キッズサイクルスクール', desc: 'お子さま向け自転車教室', icon: '👶' },
+  { time: '10:00', title: 'EXHIBITION OPEN', desc: '出展ブース巡り開始', icon: '🎪' },
+  { time: '11:00', title: 'ワンバーナークッキング', desc: 'シングルバーナー料理体験', icon: '🍳' },
+  { time: '13:00', title: '地元グルメ ランチタイム', desc: 'キッチンカー＆地元飲食', icon: '🍽️' },
+  { time: '14:00', title: 'バイクパッキング講座', desc: '旅の荷造りを学ぶ', icon: '🎒' },
+  { time: '16:00', title: '焚き火ワークショップ', desc: 'フェザースティック＆着火', icon: '🔥' },
+  { time: '18:00', title: 'ゲストトークショー', desc: 'スペシャルゲスト登壇', icon: '🎤' },
+  { time: '19:30', title: 'キャンプファイヤー', desc: '焚き火を囲んで語らう夜', icon: '🏕️' },
+  { time: '20:00', title: 'チャリティオークション', desc: '宿泊者限定イベント', icon: '🏷️' },
+];
+
+const day2 = [
+  { time: '06:00', title: '朝焼けモーニング', desc: '太平洋の朝日とともに', icon: '🌅' },
+  { time: '08:00', title: 'モーニングライド', desc: '海沿いサイクリング', icon: '🚴' },
+  { time: '09:00', title: 'ツールド福島 Day2', desc: 'レース観戦', icon: '🏁' },
+  { time: '10:00', title: 'キッズサイクルスクール', desc: 'お子さま向け自転車教室', icon: '👶' },
+  { time: '10:00', title: 'EXHIBITION OPEN', desc: '出展ブース最終日', icon: '🎪' },
+  { time: '11:00', title: 'ワンバーナークッキング', desc: '別メニューで再開催', icon: '🍳' },
+  { time: '12:00', title: 'ランチ＆フリータイム', desc: '最後のグルメ＆買い物', icon: '🍽️' },
+  { time: '14:00', title: 'クロージングセレモニー', desc: '感謝＆次回予告', icon: '🎙️' },
+  { time: '15:00', title: 'テント撤収・閉場', desc: 'また会いましょう！', icon: '👋' },
+];
+---
+
+<section id="timetable" class="timetable section-padding">
+  <div class="container">
+    <div class="tt-header reveal">
+      <span class="section-label">TIMETABLE</span>
+      <h2 class="tt-title">
+        <span class="gradient-text">タイムテーブル</span>
+      </h2>
+      <p class="tt-lead">2日間のスケジュール</p>
+    </div>
+
+    <div class="tt-columns">
+      <!-- Day 1 -->
+      <div class="tt-column reveal">
+        <div class="tt-day-header day1">
+          <span class="tt-day-date">6.13</span>
+          <span class="tt-day-label">DAY 1 — SAT</span>
+        </div>
+        <div class="tt-timeline">
+          {day1.map((item) => (
+            <div class="tt-item">
+              <div class="tt-time">{item.time}</div>
+              <div class="tt-dot-wrap">
+                <div class="tt-dot"></div>
+                <div class="tt-line"></div>
+              </div>
+              <div class="tt-info">
+                <span class="tt-icon">{item.icon}</span>
+                <div>
+                  <div class="tt-item-title">{item.title}</div>
+                  <div class="tt-item-desc">{item.desc}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="tt-column reveal delay-200">
+        <div class="tt-day-header day2">
+          <span class="tt-day-date">6.14</span>
+          <span class="tt-day-label">DAY 2 — SUN</span>
+        </div>
+        <div class="tt-timeline">
+          {day2.map((item) => (
+            <div class="tt-item">
+              <div class="tt-time">{item.time}</div>
+              <div class="tt-dot-wrap">
+                <div class="tt-dot"></div>
+                <div class="tt-line"></div>
+              </div>
+              <div class="tt-info">
+                <span class="tt-icon">{item.icon}</span>
+                <div>
+                  <div class="tt-item-title">{item.title}</div>
+                  <div class="tt-item-desc">{item.desc}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <p class="tt-note reveal">
+      ※ タイムテーブルは予定であり、変更になる場合があります。
+    </p>
+  </div>
+</section>
+
+<style>
+  .timetable {
+    background: var(--color-white);
+  }
+
+  .tt-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .tt-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .tt-lead {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+  }
+
+  /* 2-column layout */
+  .tt-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .tt-columns {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .tt-column {
+    min-width: 0;
+  }
+
+  /* Day header */
+  .tt-day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-card);
+    margin-bottom: 1.5rem;
+  }
+
+  .tt-day-header.day1 {
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-coral));
+  }
+
+  .tt-day-header.day2 {
+    background: linear-gradient(135deg, var(--color-ocean-deep), var(--color-ocean));
+  }
+
+  .tt-day-date {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--color-white);
+    line-height: 1;
+  }
+
+  .tt-day-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Timeline */
+  .tt-timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tt-item {
+    display: flex;
+    align-items: stretch;
+    min-height: 52px;
+  }
+
+  .tt-time {
+    width: 46px;
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-gray-400);
+    padding-top: 0.7rem;
+    text-align: right;
+    padding-right: 0.6rem;
+  }
+
+  .tt-dot-wrap {
+    width: 18px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .tt-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
+    flex-shrink: 0;
+    margin-top: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tt-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-gray-200);
+  }
+
+  .tt-item:last-child .tt-line {
+    display: none;
+  }
+
+  .tt-info {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.4rem 0 0.4rem 0.6rem;
+    min-width: 0;
+  }
+
+  .tt-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  .tt-item-title {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.3;
+  }
+
+  .tt-item-desc {
+    font-size: 0.7rem;
+    color: var(--color-gray-400);
+    line-height: 1.4;
+    margin-top: 0.1rem;
+  }
+
+  /* Hover */
+  .tt-item:hover .tt-info {
+    background: var(--color-sand);
+    border-radius: 8px;
+    margin-right: -0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .tt-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+  }
+</style>

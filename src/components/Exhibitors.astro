@@ -1,0 +1,183 @@
+---
+const exhibitors = [
+  { name: 'SAMPLE BIKES', url: '#', color: '#FF6B35' },
+  { name: 'CAMP GEAR CO.', url: '#', color: '#00B4D8' },
+  { name: 'TRAIL APPAREL', url: '#', color: '#FF6B6B' },
+  { name: 'OUTDOOR LIFE', url: '#', color: '#0077B6' },
+  { name: 'CYCLE WORKS', url: '#', color: '#FF8C61' },
+  { name: 'GREEN TENT', url: '#', color: '#2D8F4E' },
+  { name: 'FIRE SIDE', url: '#', color: '#E85D04' },
+  { name: 'VELO CRAFT', url: '#', color: '#7B2CBF' },
+];
+---
+
+<section id="exhibitors" class="exhibitors section-padding">
+  <div class="container">
+    <div class="exhibitors-header reveal">
+      <span class="section-label">EXHIBITORS</span>
+      <h2 class="exhibitors-title">
+        <span class="gradient-text">出展ブランド</span>
+      </h2>
+      <p class="exhibitors-lead">
+        ガレージブランドから有名ブランドまで、多彩な出展社が集結。<br class="pc-only">
+        ロゴをクリックして各ブランドの詳細をチェック。
+      </p>
+    </div>
+
+    <div class="exhibitors-grid">
+      {exhibitors.map((ex, i) => (
+        <a
+          href={ex.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`exhibitor-card reveal delay-${(i % 4 + 1) * 100}`}
+          title={ex.name}
+        >
+          <div class="exhibitor-logo" style={`--brand-color: ${ex.color}`}>
+            <span class="exhibitor-initial">{ex.name.charAt(0)}</span>
+          </div>
+          <span class="exhibitor-name">{ex.name}</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="exhibitors-note reveal">
+      ※ 出展社は随時追加されます。最新情報はSNSをご確認ください。
+    </p>
+  </div>
+</section>
+
+<style>
+  .exhibitors {
+    background: var(--color-white);
+  }
+
+  .exhibitors-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .exhibitors-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .exhibitors-lead {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .pc-only {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .pc-only {
+      display: inline;
+    }
+  }
+
+  .exhibitors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .exhibitors-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .exhibitor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 1rem;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .exhibitor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    background: var(--color-white);
+  }
+
+  .exhibitor-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--brand-color), color-mix(in srgb, var(--brand-color) 70%, white));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .exhibitor-card:hover .exhibitor-logo {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  .exhibitor-initial {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-white);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .exhibitor-name {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-600);
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .exhibitor-card:hover .exhibitor-name {
+    color: var(--color-dark);
+  }
+
+  .exhibitors-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+  }
+</style>

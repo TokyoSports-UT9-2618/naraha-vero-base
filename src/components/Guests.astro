@@ -1,0 +1,185 @@
+---
+const guests = [
+  {
+    name: 'ゲスト名 A',
+    title: 'プロサイクリスト / アウトドアアドバイザー',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+    bio: 'プロサイクリストとして国内外のレースで活躍。引退後はアウトドアアドバイザーとして、自転車旅の魅力を発信し続けている。BIKE&CAMPには初回から参加し、イベントの成長を見守ってきた一人。今回のNARAHA VERO BASEでは特別トークショーに登壇予定。',
+  },
+  {
+    name: 'ゲスト名 B',
+    title: 'アウトドアライター / キャンプコーディネーター',
+    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80',
+    bio: 'アウトドア雑誌やWebメディアで執筆活動を行うライター。キャンプギアのレビューやフィールドレポートに定評があり、初心者にもわかりやすい情報発信が人気。自らもキャンプコーディネーターとして各地のイベントをプロデュースしている。',
+  },
+];
+---
+
+<section id="guests" class="guests section-padding">
+  <div class="container">
+    <div class="guests-header reveal">
+      <span class="section-label">SPECIAL GUESTS</span>
+      <h2 class="guests-title">
+        <span class="gradient-text">スペシャルゲスト</span>
+      </h2>
+      <p class="guests-lead">
+        各分野の第一線で活躍するゲストをお迎えします。
+      </p>
+    </div>
+
+    <div class="guests-grid">
+      {guests.map((guest, i) => (
+        <div class={`guest-card reveal delay-${(i + 1) * 200}`}>
+          <div class="guest-photo-wrap">
+            <img src={guest.photo} alt={guest.name} class="guest-photo" loading="lazy" />
+            <div class="guest-photo-ring"></div>
+          </div>
+          <div class="guest-info">
+            <h3 class="guest-name">{guest.name}</h3>
+            <span class="guest-title">{guest.title}</span>
+            <p class="guest-bio">{guest.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="guests-note reveal">
+      ※ ゲスト情報は随時更新されます。
+    </p>
+  </div>
+</section>
+
+<style>
+  .guests {
+    background: var(--color-sand);
+  }
+
+  .guests-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .guests-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .guests-lead {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+  }
+
+  .guests-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .guests-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+  }
+
+  .guest-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .guest-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .guest-photo-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .guest-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .guest-photo-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean)) border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .guest-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .guest-title {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-ocean);
+    background: rgba(0, 180, 216, 0.1);
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 1.25rem;
+  }
+
+  .guest-bio {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    line-height: 1.9;
+    text-align: left;
+  }
+
+  .guests-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+  }
+</style>

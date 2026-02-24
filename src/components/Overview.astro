@@ -1,0 +1,198 @@
+---
+const items = [
+  {
+    icon: '🎯',
+    label: 'WHAT',
+    title: 'イベント内容',
+    desc: '自転車×キャンプの旅フェスティバル。展示・ワークショップ・キャンプが一体となった体験型イベントです。',
+  },
+  {
+    icon: '📅',
+    label: 'WHEN',
+    title: '開催日程',
+    desc: '2026年6月13日（土）〜 14日（日）の2日間。宿泊キャンプで夜通し楽しめます。',
+  },
+  {
+    icon: '📍',
+    label: 'WHERE',
+    title: '会場',
+    desc: '福島県双葉郡楢葉町 天神御崎公園。太平洋を一望する絶景の高台です。',
+  },
+  {
+    icon: '👥',
+    label: 'WHO',
+    title: '対象',
+    desc: 'サイクリスト、キャンパー、アウトドア好き、ファミリー、初心者まで。どなたでも参加OK。',
+  },
+  {
+    icon: '💰',
+    label: 'HOW MUCH',
+    title: '参加費',
+    desc: '入場無料（一部有料コンテンツあり）。宿泊キャンプチケットは別途購入が必要です。',
+  },
+  {
+    icon: '🚀',
+    label: 'HOW',
+    title: '参加方法',
+    desc: '事前チケット購入制（宿泊の場合）。当日入場も可能です。詳しくは下記CTAから。',
+  },
+];
+---
+
+<section id="overview" class="overview section-padding">
+  <div class="container">
+    <div class="overview-header reveal">
+      <span class="section-label">OVERVIEW</span>
+      <h2 class="overview-title">
+        <span class="gradient-text">イベント概要</span>
+      </h2>
+      <p class="overview-lead">
+        NARAHA VERO BASE 2026 の基本情報をまとめました。
+      </p>
+    </div>
+
+    <div class="overview-grid">
+      {items.map((item, i) => (
+        <div class={`overview-card reveal delay-${(i % 3 + 1) * 100}`}>
+          <div class="overview-icon-wrap">
+            <span class="overview-icon">{item.icon}</span>
+          </div>
+          <div class="overview-card-body">
+            <span class="overview-label">{item.label}</span>
+            <h3 class="overview-card-title">{item.title}</h3>
+            <p class="overview-card-desc">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .overview {
+    background: var(--color-sand);
+  }
+
+  .overview-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .overview-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .overview-lead {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .overview-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .overview-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .overview-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .overview-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .overview-icon-wrap {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--color-sand-warm), var(--color-sand));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .overview-icon {
+    font-size: 1.6rem;
+  }
+
+  .overview-card-body {
+    flex: 1;
+  }
+
+  .overview-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--color-ocean);
+    background: rgba(0, 180, 216, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.5rem;
+  }
+
+  .overview-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .overview-card-desc {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    line-height: 1.8;
+  }
+</style>

@@ -1,0 +1,204 @@
+---
+const faqs = [
+  {
+    q: '参加にはチケットが必要ですか？',
+    a: '入場は無料ですが、宿泊キャンプをご希望の方は「宿泊キャンプチケット」の事前購入が必要です。チケットは数量限定のため、お早めにご購入ください。',
+  },
+  {
+    q: '自転車に乗らなくても参加できますか？',
+    a: 'もちろんです！NARAHA VERO BASEは「旅フェスティバル」です。出展ブースの見学、ワークショップ、地元グルメ、キャンプなど、自転車に乗らない方でも十分に楽しめるコンテンツが揃っています。',
+  },
+  {
+    q: '子ども連れでも大丈夫ですか？',
+    a: 'はい、ファミリーでの参加を大歓迎しています。キッズサイクルスクールなどお子さま向けプログラムもご用意しています。会場は広い芝生なので、お子さまものびのびと過ごせます。',
+  },
+  {
+    q: '宿泊キャンプにはテントが必要ですか？',
+    a: 'ご自身のテント・寝袋をお持ちください。レンタルテントの用意はございませんが、出展ブースで購入いただくこともも可能です。車での横付けが可能なオートキャンプエリアも予定しています。',
+  },
+  {
+    q: '会場にシャワーやお風呂はありますか？',
+    a: '会場の天神御崎公園には温泉施設があり、日帰り入浴が可能です（別途料金）。遊び疲れた体を温泉で癒やすことができるのも楢葉ならではの魅力です。',
+  },
+  {
+    q: '雨天の場合はどうなりますか？',
+    a: '雨天でも基本的には開催します。一部の屋外プログラムは変更・中止になる場合があります。荒天（台風等）の場合は中止となる可能性があり、その際は公式SNSでお知らせします。',
+  },
+  {
+    q: '出展やボランティアとして参加したいのですが？',
+    a: 'ありがとうございます！出展・ボランティアに関するお問い合わせは info@bikeand.camp までメールをお送りいただくか、ページ下部のお問い合わせフォームからご連絡ください。',
+  },
+];
+---
+
+<section id="faq" class="faq section-padding">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="section-label">FAQ</span>
+      <h2 class="faq-title">
+        <span class="gradient-text">よくある質問</span>
+      </h2>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((item, i) => (
+        <details class={`faq-item reveal delay-${Math.min((i % 3 + 1) * 100, 300)}`}>
+          <summary class="faq-question">
+            <span class="faq-q-icon">Q</span>
+            <span class="faq-q-text">{item.q}</span>
+            <span class="faq-chevron">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--color-white);
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .faq-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--color-sand);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: var(--shadow-card);
+  }
+
+  .faq-item[open] {
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::marker {
+    display: none;
+    content: '';
+  }
+
+  .faq-q-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-coral));
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .faq-q-text {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--color-gray-400);
+    transition: transform 0.3s ease;
+    display: flex;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--color-sunset);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem calc(32px + 2.5rem);
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-answer p {
+    font-size: 0.88rem;
+    color: var(--color-gray-500);
+    line-height: 1.9;
+  }
+</style>

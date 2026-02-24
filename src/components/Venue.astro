@@ -80,6 +80,46 @@ const highlights = [
         </p>
       </div>
     </div>
+
+    <!-- Access Information -->
+    <div class="access-section reveal">
+      <h3 class="access-heading">
+        <span class="gradient-text">アクセス</span>
+      </h3>
+      <div class="access-grid">
+        <div class="access-card">
+          <span class="access-icon">🚗</span>
+          <h4 class="access-method">お車でお越しの方</h4>
+          <p class="access-detail">
+            常磐自動車道「広野IC」より約10分。<br>
+            会場内に無料駐車場あり（約200台）。<br>
+            ※ 混雑時は臨時駐車場をご案内します。
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">🚃</span>
+          <h4 class="access-method">電車でお越しの方</h4>
+          <p class="access-detail">
+            JR常磐線「竜田駅」下車、車で約10分。<br>
+            東京駅から特急ひたちで約2時間半。<br>
+            ※ 駅からのシャトルバス運行予定。
+          </p>
+        </div>
+        <div class="access-card">
+          <span class="access-icon">🚌</span>
+          <h4 class="access-method">バスでお越しの方</h4>
+          <p class="access-detail">
+            いわき駅前より路線バスで約50分。<br>
+            イベント当日は主要駅から<br>
+            シャトルバスの運行を予定しています。
+          </p>
+        </div>
+      </div>
+      <div class="access-address">
+        <p>📮 〒979-0513 福島県双葉郡楢葉町北田天神原30</p>
+        <p>🅿️ 無料駐車場あり（約200台）</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -315,5 +355,77 @@ const highlights = [
     line-height: 1.8;
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  /* Access Section */
+  .access-section {
+    margin-top: 3rem;
+  }
+
+  .access-heading {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .access-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .access-card {
+    background: var(--color-sand);
+    border-radius: var(--radius-card);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .access-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    background: var(--color-white);
+  }
+
+  .access-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .access-method {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .access-detail {
+    font-size: 0.8rem;
+    color: var(--color-gray-500);
+    line-height: 1.8;
+  }
+
+  .access-address {
+    text-align: center;
+    padding: 1.25rem;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-card);
+  }
+
+  .access-address p {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    line-height: 1.8;
   }
 </style>

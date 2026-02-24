@@ -1,0 +1,230 @@
+---
+const events = [
+  {
+    icon: '🔥',
+    title: '焚き火ワークショップ',
+    time: '両日 随時開催',
+    desc: 'フェザースティック作りから着火まで。初心者でも安心の焚き火体験。火の扱い方を一から学べます。',
+    tag: 'WORKSHOP',
+    tagColor: 'var(--color-sunset)',
+  },
+  {
+    icon: '🍳',
+    title: 'ワンバーナークッキング',
+    time: 'Day1 11:00〜 / Day2 11:00〜',
+    desc: 'シングルバーナーひとつで作る絶品アウトドア料理。レシピカード付きで、おうちでも再現可能。',
+    tag: 'WORKSHOP',
+    tagColor: 'var(--color-sunset)',
+  },
+  {
+    icon: '🎒',
+    title: 'バイクパッキング講座',
+    time: 'Day1 14:00〜',
+    desc: '自転車旅の荷物のまとめ方、バッグの選び方をプロが伝授。実際の装備を見ながら学べる実践型講座。',
+    tag: 'WORKSHOP',
+    tagColor: 'var(--color-sunset)',
+  },
+  {
+    icon: '🎤',
+    title: 'ゲストトークショー',
+    time: 'Day1 18:00〜',
+    desc: 'スペシャルゲストによるトークセッション。旅の経験談やアウトドアライフの魅力を語り合う夜のひととき。',
+    tag: 'STAGE',
+    tagColor: 'var(--color-ocean)',
+  },
+  {
+    icon: '🏷️',
+    title: 'チャリティオークション',
+    time: 'Day1 20:00〜',
+    desc: '出展ブランド提供の豪華アイテムが登場するチャリティオークション。宿泊者限定の特別イベント。',
+    tag: 'EVENT',
+    tagColor: 'var(--color-coral)',
+  },
+  {
+    icon: '👶',
+    title: 'キッズサイクルスクール',
+    time: '両日 10:00〜12:00',
+    desc: 'お子さま向けの自転車教室。補助輪を外す練習から安全な乗り方まで、経験豊富なインストラクターが指導。',
+    tag: 'KIDS',
+    tagColor: '#2D8F4E',
+  },
+];
+---
+
+<section id="events-workshops" class="ew section-padding">
+  <div class="container">
+    <div class="ew-header reveal">
+      <span class="section-label">EVENTS & WORKSHOPS</span>
+      <h2 class="ew-title">
+        <span class="gradient-text">イベント & ワークショップ</span>
+      </h2>
+      <p class="ew-lead">
+        見て、学んで、体験する。会場内で開催される多彩なプログラム。
+      </p>
+    </div>
+
+    <div class="ew-grid">
+      {events.map((ev, i) => (
+        <div class={`ew-card reveal delay-${(i % 3 + 1) * 100}`}>
+          <div class="ew-card-top">
+            <span class="ew-icon">{ev.icon}</span>
+            <span class="ew-tag" style={`--tag-color: ${ev.tagColor}`}>{ev.tag}</span>
+          </div>
+          <h3 class="ew-card-title">{ev.title}</h3>
+          <span class="ew-time">🕐 {ev.time}</span>
+          <p class="ew-card-desc">{ev.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="ew-note reveal">
+      ※ プログラムは変更になる場合があります。最新情報は公式SNSでお知らせします。
+    </p>
+  </div>
+</section>
+
+<style>
+  .ew {
+    background: var(--color-white);
+  }
+
+  .ew-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .ew-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .ew-lead {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+  }
+
+  .ew-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .ew-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .ew-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .ew-card {
+    background: var(--color-sand);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ew-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--tag-color, var(--color-sunset));
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .ew-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    background: var(--color-white);
+  }
+
+  .ew-card:hover::before {
+    opacity: 1;
+  }
+
+  .ew-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .ew-icon {
+    font-size: 2rem;
+  }
+
+  .ew-tag {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--tag-color);
+    background: color-mix(in srgb, var(--tag-color) 12%, transparent);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .ew-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .ew-time {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--color-gray-400);
+    margin-bottom: 0.75rem;
+  }
+
+  .ew-card-desc {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    line-height: 1.8;
+  }
+
+  .ew-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+  }
+</style>
