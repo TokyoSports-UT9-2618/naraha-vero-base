@@ -58,14 +58,16 @@ dist/
 └── _astro/ (CSS)
 ```
 
-## Cloudflare Pages デプロイ手順
-1. GitHubにpush
-2. Cloudflare Dashboard → Pages → 「Create a project」
-3. Build command: `npm run build` / Output: `dist`
-4. 環境変数: `PUBLIC_SANITY_PROJECT_ID`（Sanity使用時）
-5. Deploy
+## GitHub & Cloudflare Pages ✅
+- **GitHub**: [TokyoSports-UT9-2618/naraha-vero-base](https://github.com/TokyoSports-UT9-2618/naraha-vero-base)
+- **本番URL**: https://naraha-vero-base.pages.dev/
+- Build command: `npm run build` / Output: `dist`
+- Framework preset: Astro
+- mainブランチへのpushで自動デプロイ
 
 ## 残タスク
+- [x] GitHub連携
+- [x] Cloudflare Pages デプロイ
 - [ ] 画像差し替え（Unsplash → 正式素材）
 - [ ] Sanityプロジェクト作成 → `.env` 接続
 - [ ] 独自ドメイン設定（Cloudflare管理画面）
