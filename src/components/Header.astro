@@ -1,0 +1,279 @@
+---
+const navItems = [
+  { label: 'ABOUT', href: '#introduction' },
+  { label: 'NARAHA SPECIAL', href: '#naraha-special' },
+  { label: 'CONTENTS', href: '#experience' },
+  { label: 'HISTORY', href: '#history' },
+  { label: 'NEWS', href: '#news' },
+  { label: 'TICKET', href: '#cta' },
+];
+---
+
+<header id="site-header" class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">NVB</span>
+      <span class="logo-text">NARAHA VERO BASE</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="メインナビゲーション">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="menu-toggle"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+    >
+      <span class="hamburger"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+      {navItems.map((item) => (
+        <a href={item.href} class="mobile-nav-link">{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .site-header.scrolled {
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.05em;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.8);
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .logo-text {
+      display: block;
+    }
+  }
+
+  .nav-desktop {
+    display: none;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-desktop {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.15em;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-sunset), var(--color-ocean));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-white);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Hamburger */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+    transition: transform 0.3s ease;
+  }
+
+  .hamburger::before { top: -7px; }
+  .hamburger::after { bottom: -7px; }
+
+  .menu-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+  }
+
+  .menu-toggle[aria-expanded="true"] .hamburger::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .hamburger::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    z-index: 99;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.2em;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--color-sunset);
+    transform: scale(1.05);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll behavior
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 80) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener('click', () => {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('open');
+    document.body.style.overflow = isExpanded ? '' : 'hidden';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

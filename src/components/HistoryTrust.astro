@@ -1,0 +1,155 @@
+---
+
+---
+
+<section id="history" class="history section-padding">
+  <div class="container">
+    <div class="history-inner reveal">
+      <div class="history-visual">
+        <img 
+          src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=600&q=80" 
+          alt="キャンプフェスティバルの賑わい" 
+          loading="lazy"
+          class="history-img"
+        />
+        <div class="history-stat-badge">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">回以上の開催実績</span>
+        </div>
+      </div>
+      <div class="history-text">
+        <span class="section-label">HISTORY & TRUST</span>
+        <h2 class="history-title">
+          マナーの良い<br>
+          <span class="gradient-text">「旅人」たち</span>が集う空間
+        </h2>
+        <p class="history-desc">
+          NARAHA VERO BASEは、2017年から全国で10回以上開催されてきた「BIKE & CAMP」のDNAを受け継いでいます。
+        </p>
+        <p class="history-desc">
+          参加者の目的は「楽しむ」こと。初心者からベテラン、ファミリーからソロキャンパーまで、マナーが良くピースフルな旅人たちが集まるため、初めての方でも安心してご参加いただけます。
+        </p>
+        <div class="history-tags">
+          <span class="history-tag">🌱 初心者歓迎</span>
+          <span class="history-tag">👨‍👩‍👧‍👦 ファミリー向け</span>
+          <span class="history-tag">🏕️ ソロも安心</span>
+          <span class="history-tag">✌️ ピースフル</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .history {
+    background: var(--color-sand);
+  }
+
+  .history-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .history-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .history-visual {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .history-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .history-stat-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-card);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--color-gray-500);
+    font-weight: 500;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .history-title {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .history-desc {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 2;
+    margin-bottom: 1rem;
+  }
+
+  .history-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .history-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--color-white);
+    color: var(--color-dark);
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .history-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+</style>

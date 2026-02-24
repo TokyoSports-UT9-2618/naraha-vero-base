@@ -1,0 +1,202 @@
+---
+const blocks = [
+  {
+    title: '海と空に抱かれる絶景の地「天神御崎公園」',
+    description: '視界を遮るものなく広がる、雄大な太平洋。心地よい潮風が吹き抜ける緑豊かな高台が、今回のベースキャンプです。息を呑むような朝焼けから、波音をBGMに過ごす満天の星空まで、自然のパノラマを全身で感じられます。園内には温泉施設もあり、遊び疲れた体をすぐに癒やすことができます。',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+    imageAlt: '太平洋を望む海岸の絶景',
+    icon: '🌊',
+  },
+  {
+    title: '「競争」と「共感」を繋ぐ架け橋',
+    description: '国内最大級のロードレース「ツールド福島」との同時開催。日中は、己の限界に挑むレーサーたちの熱狂に胸を打たれ、夜はキャンプサイトでゆったりとした時間に身を委ねる。スピードを求める世界と、スローな旅の世界。一見対極にあるこのふたつを「自転車」が繋ぎ、かつてない熱量と一体感を生み出します。',
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&q=80',
+    imageAlt: 'ロードバイクレースの臨場感',
+    icon: '🔥',
+  },
+  {
+    title: '地産地消で味わう楢葉の恵み',
+    description: '地元・楢葉町の飲食店やキッチンカーが出店。美味しい地元食材を味わいながら、地域の人々や全国から集まった旅人たちとの交流を楽しめます。',
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80',
+    imageAlt: '地元のグルメとフードトラック',
+    icon: '🍽️',
+  },
+];
+---
+
+<section id="naraha-special" class="naraha-special">
+  <div class="container">
+    <div class="ns-header reveal">
+      <span class="section-label">NARAHA SPECIAL</span>
+      <h2 class="ns-title">
+        Race × Camp ——<br>
+        対極が融合する、<span class="gradient-text">楢葉だけの体験</span>
+      </h2>
+    </div>
+
+    <div class="ns-blocks">
+      {blocks.map((block, i) => (
+        <div class={`ns-block reveal ${i % 2 !== 0 ? 'ns-block-reverse' : ''}`}>
+          <div class="ns-block-image">
+            <img src={block.image} alt={block.imageAlt} loading="lazy" />
+            <div class="ns-block-icon-badge">
+              <span>{block.icon}</span>
+            </div>
+          </div>
+          <div class="ns-block-text">
+            <span class="ns-block-number">0{i + 1}</span>
+            <h3 class="ns-block-title">{block.title}</h3>
+            <p class="ns-block-desc">{block.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .naraha-special {
+    padding: 6rem 1.5rem;
+    background: linear-gradient(180deg, var(--color-sand) 0%, var(--color-white) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .naraha-special {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .ns-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .ns-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .ns-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ns-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .ns-block {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .ns-block-reverse {
+      direction: rtl;
+    }
+
+    .ns-block-reverse > * {
+      direction: ltr;
+    }
+  }
+
+  .ns-block-image {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    aspect-ratio: 4 / 3;
+  }
+
+  .ns-block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .ns-block:hover .ns-block-image img {
+    transform: scale(1.05);
+  }
+
+  .ns-block-icon-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .ns-block-text {
+    padding: 0.5rem 0;
+  }
+
+  .ns-block-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.2;
+    display: block;
+    margin-bottom: -0.5rem;
+    line-height: 1;
+  }
+
+  .ns-block-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .ns-block-desc {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 2;
+  }
+</style>

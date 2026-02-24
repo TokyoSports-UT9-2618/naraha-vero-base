@@ -1,0 +1,205 @@
+---
+const experiences = [
+  {
+    id: 'exhibition',
+    label: 'EXHIBITION',
+    subtitle: '見て、触れる',
+    description: 'ガレージブランドから希少な旅道具まで、30〜90規模のブランドが集結。最新の自転車、アウトドアギア、アパレルの展示・販売・試乗が楽しめます。',
+    icon: '🎪',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80',
+    imageAlt: 'アウトドアギアの展示',
+    color: 'var(--color-sunset)',
+    gradient: 'linear-gradient(135deg, #FF6B35, #FF8C61)',
+  },
+  {
+    id: 'activity',
+    label: 'ACTIVITY',
+    subtitle: '学ぶ、遊ぶ',
+    description: '焚き火の熾し方、ワンバーナー料理、パッキング講座など、アウトドアスキルや防災にも活かせるワークショップを多数開催。キッズスクールもご用意しています。',
+    icon: '🚴',
+    image: 'https://images.unsplash.com/photo-1571423145891-db1b2e2d484f?w=600&q=80',
+    imageAlt: 'アウトドアアクティビティ',
+    color: 'var(--color-ocean)',
+    gradient: 'linear-gradient(135deg, #00B4D8, #0077B6)',
+  },
+  {
+    id: 'camping',
+    label: 'CAMPING',
+    subtitle: '泊まる',
+    description: '最大の特徴は、会場の芝生でそのまま宿泊できること。夜はチャリティオークションやトークショーなど、宿泊者だけの特別な時間が流れます。',
+    icon: '⛺',
+    image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80',
+    imageAlt: '芝生のキャンプサイト',
+    color: 'var(--color-coral)',
+    gradient: 'linear-gradient(135deg, #FF6B6B, #FF8C61)',
+  },
+];
+---
+
+<section id="experience" class="experience">
+  <div class="container">
+    <div class="exp-header reveal">
+      <span class="section-label">CONTENTS</span>
+      <h2 class="exp-title">
+        3つの<span class="gradient-text">「体験」</span>で構成される場
+      </h2>
+    </div>
+
+    <div class="exp-grid">
+      {experiences.map((exp, i) => (
+        <div class={`exp-card reveal delay-${(i + 1) * 100}`} style={`--card-color: ${exp.color}; --card-gradient: ${exp.gradient}`}>
+          <div class="exp-card-image">
+            <img src={exp.image} alt={exp.imageAlt} loading="lazy" />
+            <div class="exp-card-overlay">
+              <span class="exp-card-icon">{exp.icon}</span>
+            </div>
+          </div>
+          <div class="exp-card-body">
+            <div class="exp-label">{exp.label}</div>
+            <h3 class="exp-card-title">{exp.subtitle}</h3>
+            <p class="exp-card-desc">{exp.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: 6rem 1.5rem;
+    background: var(--color-white);
+  }
+
+  @media (min-width: 768px) {
+    .experience {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .exp-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .exp-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .exp-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .exp-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .exp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .exp-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .exp-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .exp-card:hover .exp-card-image img {
+    transform: scale(1.08);
+  }
+
+  .exp-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 26, 46, 0.6) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  .exp-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .exp-card-body {
+    padding: 1.75rem;
+  }
+
+  .exp-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--card-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .exp-card-desc {
+    font-size: 0.88rem;
+    color: var(--color-gray-500);
+    line-height: 1.9;
+  }
+</style>

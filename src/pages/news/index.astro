@@ -1,0 +1,208 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllNews, mockNews } from '../../lib/sanity';
+
+const sanityNews = await getAllNews();
+const news = sanityNews || mockNews;
+const usingSanity = !!sanityNews;
+---
+
+<Layout title="ニュース | NARAHA VERO BASE" description="NARAHA VERO BASEの最新ニュース・お知らせ一覧です。">
+  <section class="news-page section-padding">
+    <div class="container">
+      <div class="page-header">
+        <a href="/" class="back-link">← トップに戻る</a>
+        <span class="section-label">NEWS</span>
+        <h1 class="page-title">ニュース一覧</h1>
+        {!usingSanity && (
+          <p class="mock-notice">※ サンプルデータを表示しています</p>
+        )}
+      </div>
+
+      <div class="news-list">
+        {news.map((item: any) => (
+          <a href={`/news/${item.slug?.current || item.slug}`} class="news-list-item">
+            <div class="news-list-image">
+              {item.imageUrl ? (
+                <img src={item.imageUrl} alt={item.title} loading="lazy" />
+              ) : (
+                <div class="news-list-placeholder">
+                  <span>📰</span>
+                </div>
+              )}
+            </div>
+            <div class="news-list-body">
+              <time class="news-list-date" datetime={item.date}>
+                {new Date(item.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <h2 class="news-list-title">{item.title}</h2>
+              <p class="news-list-excerpt">{item.excerpt}</p>
+              <span class="news-list-more">続きを読む →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {news.length === 0 && (
+        <div class="news-empty">
+          <p>まだニュースはありません。</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .news-page {
+    background: var(--color-sand);
+    min-height: 80vh;
+    padding-top: 8rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-sunset);
+  }
+
+  .section-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--color-dark);
+  }
+
+  .mock-notice {
+    font-size: 0.75rem;
+    color: var(--color-gray-400);
+    margin-top: 0.5rem;
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .news-list-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  @media (min-width: 768px) {
+    .news-list-item {
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+    }
+  }
+
+  .news-list-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .news-list-image {
+    height: 160px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .news-list-image {
+      height: 100%;
+    }
+  }
+
+  .news-list-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .news-list-item:hover .news-list-image img {
+    transform: scale(1.05);
+  }
+
+  .news-list-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    background: linear-gradient(135deg, var(--color-dark-soft), var(--color-dark-muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0.5;
+  }
+
+  .news-list-body {
+    padding: 1.5rem;
+  }
+
+  .news-list-date {
+    font-size: 0.75rem;
+    color: var(--color-gray-400);
+    font-weight: 500;
+  }
+
+  .news-list-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .news-list-excerpt {
+    font-size: 0.85rem;
+    color: var(--color-gray-500);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .news-list-more {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-sunset);
+  }
+
+  .news-empty {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--color-gray-400);
+  }
+</style>

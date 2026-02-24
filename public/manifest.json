@@ -1,0 +1,24 @@
+{
+    "name": "NARAHA VERO BASE",
+    "short_name": "NVB",
+    "description": "日本唯一の「自転車×キャンプ」旅フェスティバル。2026年6月13日-14日、福島県楢葉町 天神御崎公園にて開催。",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFF8F0",
+    "theme_color": "#FF6B35",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "lang": "ja",
+    "categories": [
+        "events",
+        "sports",
+        "travel"
+    ]
+}

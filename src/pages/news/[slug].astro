@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllNews, mockNews, getNewsBySlug } from '../../lib/sanity';
+
+export async function getStaticPaths() {
+  // Sanityからデータ取得を試みる
+  let news;
+  try {
+    news = await getAllNews();
+  } catch (e) {
+    news = null;
+  }
+
+  // モックデータにフォールバック
+  const allNews = news || mockNews;
+
+  return allNews.map((item: any) => ({
+    params: { slug: item.slug?.current || item.slug },
+    props: { article: item },
+  }));
+}
+
+const { article } = Astro.props;
+
+// Portable Textのブロックをプレーンテキストに変換するヘルパー
+function blocksToText(blocks: any[]): string {
+  if (!blocks || !Array.isArray(blocks)) return '';
+  return blocks
+    .filter((block: any) => block._type === 'block')
+    .map((block: any) => {
+      return block.children
+        ?.map((child: any) => child.text)
+        .join('') || '';
+    })
+    .join('\n\n');
+}
+
+const contentText = article.content ? blocksToText(article.content) : article.excerpt || '';
+---
+
+<Layout 
+  title={`${article.title} | NARAHA VERO BASE`} 
+  description={article.excerpt || ''}
+>
+  <article class="article-page section-padding">
+    <div class="container">
+      <div class="article-header">
+        <a href="/news" class="back-link">← ニュース一覧に戻る</a>
+        
+        <time class="article-date" datetime={article.date}>
+          {new Date(article.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        
+        <h1 class="article-title">{article.title}</h1>
+      </div>
+
+      {article.imageUrl && (
+        <div class="article-hero-image">
+          <img src={article.imageUrl} alt={article.title} />
+        </div>
+      )}
+
+      <div class="article-content">
+        {contentText.split('\n\n').map((paragraph: string) => (
+          paragraph.trim() && <p>{paragraph}</p>
+        ))}
+
+        {!contentText && article.excerpt && (
+          <p>{article.excerpt}</p>
+        )}
+      </div>
+
+      <div class="article-footer">
+        <a href="/news" class="btn-outline">ニュース一覧に戻る</a>
+        <a href="/" class="btn-outline-ghost">トップページへ</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article-page {
+    background: var(--color-sand);
+    min-height: 80vh;
+    padding-top: 8rem;
+  }
+
+  .article-header {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-sunset);
+  }
+
+  .article-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .article-hero-image {
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .article-hero-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+  }
+
+  .article-content p {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-sunset);
+  }
+
+  .article-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .article-content blockquote {
+    border-left: 4px solid var(--color-sunset);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--color-white);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    font-style: italic;
+    color: var(--color-gray-600);
+  }
+
+  .article-content img {
+    border-radius: var(--radius-card);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-card);
+  }
+
+  .article-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid var(--color-sunset);
+    color: var(--color-sunset);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-sunset);
+    color: var(--color-white);
+  }
+
+  .btn-outline-ghost {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid var(--color-gray-300);
+    color: var(--color-gray-500);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-ghost:hover {
+    border-color: var(--color-gray-500);
+    color: var(--color-dark);
+  }
+</style>

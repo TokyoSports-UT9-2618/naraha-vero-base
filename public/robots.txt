@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naraha-vero-base.pages.dev/sitemap-index.xml

@@ -1,0 +1,187 @@
+---
+
+---
+
+<section id="cta" class="cta-section">
+  <div class="cta-bg">
+    <img 
+      src="https://images.unsplash.com/photo-1475483768296-6163e08872a1?w=1920&q=80" 
+      alt="夕暮れのキャンプファイヤー" 
+      class="cta-bg-img"
+    />
+    <div class="cta-overlay"></div>
+  </div>
+
+  <div class="container cta-content">
+    <div class="cta-inner reveal">
+      <span class="cta-icon">🎟️</span>
+      <h2 class="cta-title">Join Us!</h2>
+      <p class="cta-desc">
+        大人気の「宿泊キャンプチケット」は数量限定です。<br class="pc-only">
+        過去のイベントでは即完売の実績も多数ありますので、<br class="pc-only">
+        お早めのチェックをおすすめします。
+      </p>
+
+      <div class="cta-buttons">
+        <a href="#" class="cta-btn-primary">
+          <span class="cta-btn-icon">⛺</span>
+          宿泊チケットを購入する
+        </a>
+        <a href="mailto:info@bikeand.camp" class="cta-btn-secondary">
+          <span class="cta-btn-icon">📩</span>
+          出展・ボランティアのお問い合わせ
+        </a>
+      </div>
+
+      <div class="cta-note">
+        <p>※ チケット販売サイトへ移動します（準備中）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    position: relative;
+    padding: 8rem 1.5rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .cta-section {
+      padding: 10rem 3rem;
+    }
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cta-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(15, 52, 96, 0.75) 50%, rgba(0, 119, 182, 0.7) 100%);
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 900;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cta-desc {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 2;
+    margin-bottom: 2.5rem;
+  }
+
+  .pc-only {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .pc-only {
+      display: inline;
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .cta-buttons {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+  }
+
+  .cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-coral));
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 25px rgba(255, 107, 53, 0.4);
+    letter-spacing: 0.03em;
+  }
+
+  .cta-btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 35px rgba(255, 107, 53, 0.6);
+  }
+
+  .cta-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .cta-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .cta-btn-icon {
+    font-size: 1.1rem;
+  }
+
+  .cta-note {
+    margin-top: 2rem;
+  }
+
+  .cta-note p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+</style>

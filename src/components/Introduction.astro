@@ -1,0 +1,195 @@
+---
+const concepts = [
+  {
+    icon: '🏁',
+    title: 'Not a Race',
+    description: 'ここでは誰も競いません。焚き火を囲み、今日のライドやこれからの旅について語らう場所です。',
+    color: 'var(--color-sunset)',
+  },
+  {
+    icon: '🎵',
+    title: 'The Vibe',
+    description: '米西海岸のような自由でCHILLな空気感。時間の流れを忘れさせる心地よさがあります。',
+    color: 'var(--color-ocean)',
+  },
+  {
+    icon: '🤝',
+    title: 'Inclusivity',
+    description: '自転車に乗る人も乗らない人も、これから始めたい人も。家族や仲間とフラットに楽しめる体験型フェスティバルです。',
+    color: 'var(--color-coral)',
+  },
+];
+---
+
+<section id="introduction" class="introduction section-padding">
+  <div class="container">
+    <div class="intro-header reveal">
+      <span class="section-label">ABOUT</span>
+      <h2 class="intro-title">
+        すべてのサイクリストと<br>旅人が交わる<span class="gradient-text">ベースキャンプ</span>
+      </h2>
+      <p class="intro-lead">
+        ここは「自転車イベント」でも「キャンプイベント」でもありません。<br class="pc-only">
+        旅人が集まり、価値観を共有する<strong>「旅イベント」</strong>です。
+      </p>
+    </div>
+
+    <div class="concepts-grid">
+      {concepts.map((concept, i) => (
+        <div class={`concept-card reveal delay-${(i + 1) * 100}`} style={`--accent: ${concept.color}`}>
+          <div class="concept-icon-wrap">
+            <span class="concept-icon">{concept.icon}</span>
+          </div>
+          <h3 class="concept-title">{concept.title}</h3>
+          <p class="concept-desc">{concept.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .introduction {
+    background: var(--color-sand);
+    position: relative;
+  }
+
+  .intro-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .intro-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .intro-lead {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    color: var(--color-gray-500);
+    line-height: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .intro-lead strong {
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+
+  .pc-only {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .pc-only {
+      display: inline;
+    }
+  }
+
+  .concepts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .concepts-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .concept-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent, var(--color-sunset)), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .concept-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .concept-card:hover::before {
+    opacity: 1;
+  }
+
+  .concept-icon-wrap {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, white), color-mix(in srgb, var(--accent) 5%, white));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .concept-card:hover .concept-icon-wrap {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .concept-icon {
+    font-size: 2rem;
+  }
+
+  .concept-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .concept-desc {
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    line-height: 1.9;
+  }
+</style>

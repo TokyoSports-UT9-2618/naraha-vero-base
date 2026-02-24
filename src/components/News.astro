@@ -1,0 +1,249 @@
+---
+import { getLatestNews, mockNews } from '../lib/sanity';
+
+// Sanity APIから取得を試み、失敗時はモックデータを使用
+const sanityNews = await getLatestNews();
+const news = sanityNews || mockNews;
+const usingSanity = !!sanityNews;
+---
+
+<section id="news" class="news section-padding">
+  <div class="container">
+    <div class="news-header reveal">
+      <span class="section-label">NEWS</span>
+      <h2 class="news-title">最新情報</h2>
+      {!usingSanity && (
+        <p class="news-mock-notice">※ サンプルデータを表示しています</p>
+      )}
+    </div>
+
+    <div class="news-grid">
+      {news.map((item: any, i: number) => (
+        <a href={`/news/${item.slug?.current || item.slug}`} class={`news-card reveal delay-${(i + 1) * 100}`}>
+          <div class="news-card-image">
+            {item.imageUrl ? (
+              <img src={item.imageUrl} alt={item.title} loading="lazy" class="news-img" />
+            ) : (
+              <div class="news-image-placeholder">
+                <span class="news-placeholder-icon">📰</span>
+              </div>
+            )}
+            <div class="news-date-badge">
+              <time datetime={item.date}>
+                {new Date(item.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+            </div>
+          </div>
+          <div class="news-card-body">
+            <h3 class="news-card-title">{item.title}</h3>
+            <p class="news-card-excerpt">{item.excerpt}</p>
+            <span class="news-read-more">
+              続きを読む
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="news-more reveal">
+      <a href="/news" class="btn-outline">
+        ニュース一覧を見る →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news {
+    background: var(--color-sand);
+  }
+
+  .news-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-sunset);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-sunset);
+    vertical-align: middle;
+    margin: 0 1rem;
+    opacity: 0.5;
+  }
+
+  .news-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--color-dark);
+  }
+
+  .news-mock-notice {
+    font-size: 0.75rem;
+    color: var(--color-gray-400);
+    margin-top: 0.5rem;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .news-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .news-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .news-card-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .news-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .news-card:hover .news-img {
+    transform: scale(1.05);
+  }
+
+  .news-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-dark-soft), var(--color-dark-muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
+  }
+
+  .news-card:hover .news-image-placeholder {
+    transform: scale(1.05);
+  }
+
+  .news-placeholder-icon {
+    font-size: 2.5rem;
+    opacity: 0.5;
+  }
+
+  .news-date-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(26, 26, 46, 0.7);
+    backdrop-filter: blur(10px);
+    color: var(--color-white);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .news-card-body {
+    padding: 1.5rem;
+  }
+
+  .news-card-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .news-card-excerpt {
+    font-size: 0.82rem;
+    color: var(--color-gray-500);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .news-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-sunset);
+    transition: gap 0.3s ease;
+  }
+
+  .news-card:hover .news-read-more {
+    gap: 0.75rem;
+  }
+
+  .news-more {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 2px solid var(--color-sunset);
+    color: var(--color-sunset);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-sunset);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+  }
+</style>
