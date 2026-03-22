@@ -19,11 +19,11 @@ const exhibitors = [
         <span class="gradient-text">出展ブランド</span>
       </h2>
       <p class="exhibitors-lead">
-        ガレージブランドから有名ブランドまで、多彩な出展社が集結。<br class="pc-only">
-        ロゴをクリックして各ブランドの詳細をチェック。
+        ガレージブランドから有名ブランドまで、多彩な出展社が集結予定。
       </p>
     </div>
 
+    {/* タイル表示 — 出展社決定後にここのコメントを外してcomingSoonブロックをコメントアウトする
     <div class="exhibitors-grid">
       {exhibitors.map((ex, i) => (
         <a
@@ -40,10 +40,13 @@ const exhibitors = [
         </a>
       ))}
     </div>
+    */}
 
-    <p class="exhibitors-note reveal">
-      ※ 出展社は随時追加されます。最新情報はSNSをご確認ください。
-    </p>
+    <div class="coming-soon reveal">
+      <span class="coming-soon-icon">🚲</span>
+      <p class="coming-soon-text">出展ブランド決定後、順次公開していきます。</p>
+      <p class="coming-soon-sub">最新情報はSNSをご確認ください。</p>
+    </div>
   </div>
 </section>
 
@@ -178,6 +181,32 @@ const exhibitors = [
     text-align: center;
     margin-top: 2.5rem;
     font-size: 0.8rem;
+    color: var(--color-gray-400);
+  }
+
+  .coming-soon {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-card);
+  }
+
+  .coming-soon-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .coming-soon-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .coming-soon-sub {
+    font-size: 0.85rem;
     color: var(--color-gray-400);
   }
 </style>
