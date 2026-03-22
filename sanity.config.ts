@@ -100,7 +100,7 @@ const newsSchema = {
 export default defineConfig({
     name: 'naraha-vero-base',
     title: 'NARAHA VERO BASE 管理画面',
-    projectId: 'placeholder',
+    projectId: 'd3pt5qdo',
     dataset: 'production',
     plugins: [structureTool()],
     schema: {
