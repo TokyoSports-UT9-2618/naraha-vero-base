@@ -12,7 +12,7 @@ interface Props {
 
 const {
   title = 'NARAHA VERO BASE 2026 | 自転車×キャンプ 旅フェスティバル',
-  description = '2026年6月13日-14日、福島県楢葉町 天神御崎公園で開催。日本唯一の「自転車×キャンプ」旅フェスティバル。競技ではなく「楽しむ・語らう」ことが目的のCHILLなイベント。',
+  description = '2026年6月13日-14日、福島県楢葉町 天神岬スポーツ公園で開催。日本唯一の「自転車×キャンプ」旅フェスティバル。競技ではなく「楽しむ・語らう」ことが目的のCHILLなイベント。',
   ogImage = '/og-image.jpg',
   canonical,
 } = Astro.props;
@@ -76,7 +76,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).toStri
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "天神御崎公園",
+        "name": "天神岬スポーツ公園",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "楢葉町",

@@ -73,7 +73,7 @@ export const mockNews = [
     title: 'NARAHA VERO BASE 2026 開催決定！',
     slug: { current: 'naraha-vero-base-2026' },
     date: '2026-01-15',
-    excerpt: '福島県楢葉町で日本初の「自転車×キャンプ」旅フェスティバルを開催します。2026年6月13日-14日、天神御崎公園にて。',
+    excerpt: '福島県楢葉町で日本初の「自転車×キャンプ」旅フェスティバルを開催します。2026年6月13日-14日、天神岬スポーツ公園にて。',
     imageUrl: null,
   },
   {
