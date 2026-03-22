@@ -27,25 +27,18 @@ const guests = [
       </p>
     </div>
 
-    <div class="guests-grid">
-      {guests.map((guest, i) => (
-        <div class={`guest-card reveal delay-${(i + 1) * 200}`}>
-          <div class="guest-photo-wrap">
-            <img src={guest.photo} alt={guest.name} class="guest-photo" loading="lazy" />
-            <div class="guest-photo-ring"></div>
-          </div>
-          <div class="guest-info">
-            <h3 class="guest-name">{guest.name}</h3>
-            <span class="guest-title">{guest.title}</span>
-            <p class="guest-bio">{guest.bio}</p>
-          </div>
-        </div>
-      ))}
+    <div class="guests-coming-soon reveal">
+      <p class="guests-soon-text">詳細が決まり次第、発表します。お楽しみに！</p>
     </div>
 
+    <!-- guest cards (hidden until guests are confirmed)
+    <div class="guests-grid">
+      ...
+    </div>
     <p class="guests-note reveal">
       ※ ゲスト情報は随時更新されます。
     </p>
+    -->
   </div>
 </section>
 
@@ -174,6 +167,17 @@ const guests = [
     color: var(--color-gray-500);
     line-height: 1.9;
     text-align: left;
+  }
+
+  .guests-coming-soon {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .guests-soon-text {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+    letter-spacing: 0.05em;
   }
 
   .guests-note {

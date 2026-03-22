@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080718"/>
+      <stop offset="100%" style="stop-color:#0f0d2e"/>
+    </linearGradient>
+
+    <!-- NVB gradient: campfire → chill night (deep midnight blue) → dawn purple -->
+    <linearGradient id="nvbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#E8520A"/>
+      <stop offset="22%"  style="stop-color:#7B2FBE"/>
+      <stop offset="40%"  style="stop-color:#0D1A6E"/>
+      <stop offset="58%"  style="stop-color:#0F2180"/>
+      <stop offset="78%"  style="stop-color:#5B21B6"/>
+      <stop offset="100%" style="stop-color:#9333EA"/>
+    </linearGradient>
+
+    <!-- Divider gradient -->
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#E8520A; stop-opacity:0.6"/>
+      <stop offset="30%"  style="stop-color:#0D1A6E; stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#9333EA; stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="300" fill="url(#bg)"/>
+
+  <!-- Top label -->
+  <text x="250" y="72" text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="10" font-weight="600"
+    letter-spacing="6"
+    fill="rgba(255,255,255,0.3)">BIKE × CAMP FESTIVAL</text>
+
+  <!-- NVB main logo -->
+  <text x="250" y="178" text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="110" font-weight="900"
+    letter-spacing="8"
+    fill="url(#nvbGrad)">NVB</text>
+
+  <!-- Divider line -->
+  <line x1="155" y1="198" x2="345" y2="198" stroke="url(#lineGrad)" stroke-width="0.8"/>
+
+  <!-- NARAHA VERO BASE -->
+  <text x="250" y="222" text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="13" font-weight="500"
+    letter-spacing="5"
+    fill="rgba(255,255,255,0.7)">NARAHA VERO BASE</text>
+
+  <!-- Bottom tagline -->
+  <text x="250" y="256" text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="9" font-weight="400"
+    letter-spacing="3"
+    fill="rgba(255,255,255,0.25)">FUKUSHIMA, JAPAN  ·  2026</text>
+
+</svg>

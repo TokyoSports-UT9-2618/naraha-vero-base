@@ -37,63 +37,16 @@ const day2 = [
       <p class="tt-lead">2日間のスケジュール</p>
     </div>
 
+    <p class="tt-coming-soon reveal">詳細が決まり次第おしらせします</p>
+
+    <!-- timetable columns (hidden until details are confirmed)
     <div class="tt-columns">
-      <!-- Day 1 -->
-      <div class="tt-column reveal">
-        <div class="tt-day-header day1">
-          <span class="tt-day-date">6.13</span>
-          <span class="tt-day-label">DAY 1 — SAT</span>
-        </div>
-        <div class="tt-timeline">
-          {day1.map((item) => (
-            <div class="tt-item">
-              <div class="tt-time">{item.time}</div>
-              <div class="tt-dot-wrap">
-                <div class="tt-dot"></div>
-                <div class="tt-line"></div>
-              </div>
-              <div class="tt-info">
-                <span class="tt-icon">{item.icon}</span>
-                <div>
-                  <div class="tt-item-title">{item.title}</div>
-                  <div class="tt-item-desc">{item.desc}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="tt-column reveal delay-200">
-        <div class="tt-day-header day2">
-          <span class="tt-day-date">6.14</span>
-          <span class="tt-day-label">DAY 2 — SUN</span>
-        </div>
-        <div class="tt-timeline">
-          {day2.map((item) => (
-            <div class="tt-item">
-              <div class="tt-time">{item.time}</div>
-              <div class="tt-dot-wrap">
-                <div class="tt-dot"></div>
-                <div class="tt-line"></div>
-              </div>
-              <div class="tt-info">
-                <span class="tt-icon">{item.icon}</span>
-                <div>
-                  <div class="tt-item-title">{item.title}</div>
-                  <div class="tt-item-desc">{item.desc}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      ...
     </div>
-
     <p class="tt-note reveal">
       ※ タイムテーブルは予定であり、変更になる場合があります。
     </p>
+    -->
   </div>
 </section>
 
@@ -284,6 +237,14 @@ const day2 = [
     border-radius: 8px;
     margin-right: -0.25rem;
     padding-right: 0.25rem;
+  }
+
+  .tt-coming-soon {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 1rem;
+    color: var(--color-gray-400);
+    letter-spacing: 0.05em;
   }
 
   .tt-note {
