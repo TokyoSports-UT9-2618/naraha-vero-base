@@ -2,19 +2,19 @@
 const events = [
   {
     icon: '🔥',
-    title: '焚き火ワークショップ',
-    time: '両日 随時開催',
-    desc: 'フェザースティック作りから着火まで。初心者でも安心の焚き火体験。火の扱い方を一から学べます。',
-    tag: 'WORKSHOP',
+    title: '焚き火トークショー',
+    time: 'Day1（土）夜',
+    desc: 'スペシャルゲストによるトークセッション。旅の経験談やアウトドアライフの魅力を語り合う、焚き火を囲む夜のひととき。',
+    tag: 'STAGE',
     tagColor: 'var(--color-sunset)',
   },
   {
-    icon: '🍳',
-    title: 'ワンバーナークッキング',
-    time: 'Day1 11:00〜 / Day2 11:00〜',
-    desc: 'シングルバーナーひとつで作る絶品アウトドア料理。レシピカード付きで、おうちでも再現可能。',
-    tag: 'WORKSHOP',
-    tagColor: 'var(--color-sunset)',
+    icon: '🎆',
+    title: '花火打ち上げ',
+    time: 'Day1（土）夜',
+    desc: '澄み渡る楢葉の夜空に打ち上がる花火。宿泊キャンプチケット保持者だけが体験できる、海と空に包まれた特別な一夜のフィナーレ。',
+    tag: 'SPECIAL',
+    tagColor: 'var(--color-ocean)',
   },
   {
     icon: '🎒',
@@ -25,13 +25,14 @@ const events = [
     tagColor: 'var(--color-sunset)',
   },
   {
-    icon: '🎤',
-    title: 'ゲストトークショー',
-    time: 'Day1 18:00〜',
-    desc: 'スペシャルゲストによるトークセッション。旅の経験談やアウトドアライフの魅力を語り合う夜のひととき。',
-    tag: 'STAGE',
-    tagColor: 'var(--color-ocean)',
+    icon: '📷',
+    title: 'バイクキャンプスタイル フォトコンテスト',
+    time: '随時',
+    desc: 'あなたの旅スタイルをシェアしよう。ライドやキャンプのベストショットを応募すると、本部前に張り出されます。NVBならではの思い出を形に。',
+    tag: 'EVENT',
+    tagColor: 'var(--color-coral)',
   },
+  /* 決定次第復活 —— ここからコメントを外す
   {
     icon: '🏷️',
     title: 'チャリティオークション',
@@ -48,6 +49,7 @@ const events = [
     tag: 'KIDS',
     tagColor: '#2D8F4E',
   },
+  */
 ];
 ---
 
@@ -75,6 +77,10 @@ const events = [
           <p class="ew-card-desc">{ev.desc}</p>
         </div>
       ))}
+    </div>
+
+    <div class="ew-coming-soon reveal">
+      <p class="ew-coming-soon-text">その他のプログラムは決定次第、順次公開していきます。</p>
     </div>
 
     <p class="ew-note reveal">
@@ -221,9 +227,24 @@ const events = [
     line-height: 1.8;
   }
 
-  .ew-note {
+  .ew-coming-soon {
     text-align: center;
     margin-top: 2.5rem;
+    padding: 1.25rem 2rem;
+    background: var(--color-sand);
+    border-radius: var(--radius-card);
+  }
+
+  .ew-coming-soon-text {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+  }
+
+  .ew-note {
+    text-align: center;
+    margin-top: 1.5rem;
     font-size: 0.8rem;
     color: var(--color-gray-400);
   }
