@@ -5,18 +5,24 @@ const concepts = [
     title: 'Not a Race',
     description: 'ここでは誰も競いません。焚き火を囲み、今日のライドやこれからの旅について語らう場所です。',
     color: 'var(--color-sunset)',
+    image: '/images/about-not-a-race.jpg',
+    imageAlt: '焚き火を囲んで語らうBIKE & CAMPの参加者たち',
   },
   {
     icon: '🎵',
     title: 'The Vibe',
     description: '米西海岸のような自由でCHILLな空気感。時間の流れを忘れさせる心地よさがあります。',
     color: 'var(--color-ocean)',
+    image: '/images/about-the-vibe.jpg',
+    imageAlt: 'チルな雰囲気のサイクリスト',
   },
   {
     icon: '🤝',
     title: 'Inclusivity',
     description: '自転車に乗る人も乗らない人も、これから始めたい人も。家族や仲間とフラットに楽しめる体験型フェスティバルです。',
     color: 'var(--color-coral)',
+    image: '/images/about-inclusivity.jpg',
+    imageAlt: 'みんなで楽しむBIKE & CAMPの風景',
   },
 ];
 ---
@@ -37,11 +43,17 @@ const concepts = [
     <div class="concepts-grid">
       {concepts.map((concept, i) => (
         <div class={`concept-card reveal delay-${(i + 1) * 100}`} style={`--accent: ${concept.color}`}>
-          <div class="concept-icon-wrap">
-            <span class="concept-icon">{concept.icon}</span>
+          <div class="concept-image-wrap">
+            <img src={concept.image} alt={concept.imageAlt} loading="lazy" class="concept-image" />
+            <div class="concept-image-overlay"></div>
+            <div class="concept-icon-badge">
+              <span class="concept-icon">{concept.icon}</span>
+            </div>
           </div>
-          <h3 class="concept-title">{concept.title}</h3>
-          <p class="concept-desc">{concept.description}</p>
+          <div class="concept-body">
+            <h3 class="concept-title">{concept.title}</h3>
+            <p class="concept-desc">{concept.description}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -129,24 +141,10 @@ const concepts = [
   .concept-card {
     background: var(--color-white);
     border-radius: var(--radius-card);
-    padding: 2.5rem 2rem;
-    text-align: center;
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow-card);
     position: relative;
-    overflow: hidden;
-  }
-
-  .concept-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent, var(--color-sunset)), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
   }
 
   .concept-card:hover {
@@ -154,41 +152,61 @@ const concepts = [
     box-shadow: var(--shadow-card-hover);
   }
 
-  .concept-card:hover::before {
-    opacity: 1;
+  .concept-image-wrap {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
   }
 
-  .concept-icon-wrap {
-    width: 70px;
-    height: 70px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, white), color-mix(in srgb, var(--accent) 5%, white));
+  .concept-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .concept-card:hover .concept-image {
+    transform: scale(1.08);
+  }
+
+  .concept-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 26, 46, 0.5) 0%, transparent 60%);
+  }
+
+  .concept-icon-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    transition: transform 0.3s ease;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   }
 
-  .concept-card:hover .concept-icon-wrap {
-    transform: scale(1.1) rotate(5deg);
-  }
-
-  .concept-icon {
-    font-size: 2rem;
+  .concept-body {
+    padding: 1.75rem 1.75rem;
+    border-top: 3px solid var(--accent, var(--color-sunset));
   }
 
   .concept-title {
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--color-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     letter-spacing: 0.02em;
   }
 
   .concept-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--color-gray-500);
     line-height: 1.9;
   }
