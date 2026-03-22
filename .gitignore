@@ -20,5 +20,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# 写真素材（原本）- public/images/ にコピーしたものだけをGit管理する
+photo_for_nvb/
+
 # jetbrains setting folder
 .idea/
