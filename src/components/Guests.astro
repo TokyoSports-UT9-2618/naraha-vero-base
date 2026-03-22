@@ -18,17 +18,22 @@ const guests = [
 <section id="guests" class="guests section-padding">
   <div class="container">
     <div class="guests-header reveal">
-      <span class="section-label">SPECIAL GUESTS</span>
+      <span class="section-label">COMING SOON</span>
       <h2 class="guests-title">
-        <span class="gradient-text">スペシャルゲスト</span>
+        <span class="gradient-text">続々と発表予定</span>
       </h2>
       <p class="guests-lead">
-        各分野の第一線で活躍するゲストをお迎えします。
+        出展社・ワークショップ・スペシャルゲスト・タイムテーブルは<br>詳細が決まり次第、発表します。お楽しみに！
       </p>
     </div>
 
     <div class="guests-coming-soon reveal">
-      <p class="guests-soon-text">詳細が決まり次第、発表します。お楽しみに！</p>
+      <div class="coming-soon-tags">
+        <span class="cs-tag">🏢 出展社</span>
+        <span class="cs-tag">🎪 イベント・WS</span>
+        <span class="cs-tag">🎤 スペシャルゲスト</span>
+        <span class="cs-tag">🗓 タイムテーブル</span>
+      </div>
     </div>
 
     <!-- guest cards (hidden until guests are confirmed)
@@ -171,12 +176,30 @@ const guests = [
 
   .guests-coming-soon {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 1rem 1rem 3rem;
+  }
+
+  .coming-soon-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .cs-tag {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    color: var(--color-gray-500);
+    background: var(--color-white);
   }
 
   .guests-soon-text {
-    font-size: 1rem;
-    color: var(--color-gray-500);
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
+    color: var(--color-gray-400);
     letter-spacing: 0.05em;
   }
 

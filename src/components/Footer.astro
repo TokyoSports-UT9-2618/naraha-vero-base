@@ -15,8 +15,7 @@ const currentYear = new Date().getFullYear();
         <!-- Brand -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <span class="footer-logo-mark">NVB</span>
-            <span class="footer-logo-sub">NARAHA VERO BASE</span>
+            <img src="/images/nvb-logo-only.png" alt="NARAHA VERO BASE" class="footer-logo-img" />
           </div>
           <p class="footer-tagline">自転車とキャンプで、地域に新しい<br>「人の流れ」と「物語」をつくる</p>
         </div>
@@ -30,33 +29,29 @@ const currentYear = new Date().getFullYear();
           </ul>
         </div>
 
-        <!-- Contact -->
-        <div class="footer-section">
-          <h3 class="footer-heading">お問い合わせ</h3>
-          <ul class="footer-list">
-            <li>
-              <a href="mailto:info@bikeand.camp" class="footer-link">
-                ✉️ info@bikeand.camp
-              </a>
-            </li>
-            <li>
-              <a href="#" class="footer-cta" target="_blank" rel="noopener noreferrer">
-                🏢 出展・スポンサーのお問い合わせ
-              </a>
-            </li>
-          </ul>
-        </div>
-
         <!-- Links -->
         <div class="footer-section">
           <h3 class="footer-heading">リンク</h3>
           <ul class="footer-list">
             <li><a href="#introduction" class="footer-link">ABOUT</a></li>
-            <li><a href="#naraha-special" class="footer-link">NARAHA SPECIAL</a></li>
+            <li><a href="#overview" class="footer-link">概要</a></li>
             <li><a href="#experience" class="footer-link">CONTENTS</a></li>
-            <li><a href="#history" class="footer-link">HISTORY</a></li>
+            <li><a href="#venue" class="footer-link">会場</a></li>
             <li><a href="#news" class="footer-link">NEWS</a></li>
+            <li><a href="#faq" class="footer-link">FAQ</a></li>
+            <li><a href="#contact" class="footer-link">CONTACT</a></li>
           </ul>
+        </div>
+
+        <!-- Buttons -->
+        <div class="footer-section">
+          <h3 class="footer-heading">チケット・出展</h3>
+          <div class="footer-buttons">
+            <span class="footer-btn-primary">⛺ 4/1から予約スタート</span>
+            <a href="https://select-type.com/ev/?ev=nyKigfrgODM" target="_blank" rel="noopener noreferrer" class="footer-btn-secondary">
+              🏢 ご出展希望の方はこちらから
+            </a>
+          </div>
         </div>
       </div>
 
@@ -117,28 +112,12 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer-logo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
     margin-bottom: 1rem;
   }
 
-  .footer-logo-mark {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 2rem;
-    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .footer-logo-sub {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.5);
+  .footer-logo-img {
+    height: 80px;
+    width: auto;
   }
 
   .footer-tagline {
@@ -174,21 +153,37 @@ const currentYear = new Date().getFullYear();
     color: var(--color-ocean-light);
   }
 
-  .footer-cta {
+  .footer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-btn-primary {
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     background: linear-gradient(135deg, var(--color-sunset), var(--color-coral));
-    color: var(--color-white) !important;
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: default;
+  }
+
+  .footer-btn-secondary {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.8);
     border-radius: var(--radius-pill);
     font-size: 0.8rem;
     font-weight: 500;
     transition: all 0.3s ease;
-    margin-top: 0.25rem;
   }
 
-  .footer-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+  .footer-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
   }
 
   .footer-organizer {

@@ -25,7 +25,7 @@ const usingSanity = !!sanityNews;
               <img src={item.imageUrl} alt={item.title} loading="lazy" class="news-img" />
             ) : (
               <div class="news-image-placeholder">
-                <span class="news-placeholder-icon">📰</span>
+                <img src="/images/nvb-logo.svg" alt="NARAHA VERO BASE" class="news-placeholder-logo" />
               </div>
             )}
             <div class="news-date-badge">
@@ -161,9 +161,10 @@ const usingSanity = !!sanityNews;
     transform: scale(1.05);
   }
 
-  .news-placeholder-icon {
-    font-size: 2.5rem;
-    opacity: 0.5;
+  .news-placeholder-logo {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
   }
 
   .news-date-badge {

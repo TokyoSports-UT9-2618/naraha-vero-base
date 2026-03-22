@@ -18,8 +18,7 @@ const navItems = [
 <header id="site-header" class="site-header">
   <div class="header-inner">
     <a href="/" class="logo">
-      <span class="logo-mark">NVB</span>
-      <span class="logo-text">NARAHA VERO BASE</span>
+      <img src="/images/nvb-logo-only.png" alt="NVB" class="logo-img" />
     </a>
 
     <nav class="nav-desktop" aria-label="メインナビゲーション">
@@ -60,7 +59,7 @@ const navItems = [
   }
 
   .site-header.scrolled {
-    background: rgba(26, 26, 46, 0.85);
+    background: rgba(26, 26, 46, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 0.6rem 1.5rem;
@@ -84,30 +83,9 @@ const navItems = [
     flex-shrink: 0;
   }
 
-  .logo-mark {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 1.5rem;
-    background: linear-gradient(135deg, var(--color-sunset), var(--color-ocean));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.05em;
-  }
-
-  .logo-text {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.8);
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .logo-text {
-      display: block;
-    }
+  .logo-img {
+    height: 44px;
+    width: auto;
   }
 
   .nav-desktop {

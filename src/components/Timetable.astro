@@ -2,7 +2,7 @@
 const day1 = [
   { time: '08:00', title: '開場・受付開始', desc: 'テントサイト設営も可', icon: '🚪' },
   { time: '09:00', title: 'オープニングセレモニー', desc: '主催者挨拶・ゲスト紹介', icon: '🎙️' },
-  { time: '09:30', title: 'ツールド福島 スタート', desc: 'レース観戦エリアへ', icon: '🚴' },
+  { time: '09:30', title: 'ツール・ド・ふくしま スタート', desc: 'レース観戦エリアへ', icon: '🚴' },
   { time: '10:00', title: 'キッズサイクルスクール', desc: 'お子さま向け自転車教室', icon: '👶' },
   { time: '10:00', title: 'EXHIBITION OPEN', desc: '出展ブース巡り開始', icon: '🎪' },
   { time: '11:00', title: 'ワンバーナークッキング', desc: 'シングルバーナー料理体験', icon: '🍳' },
@@ -17,7 +17,7 @@ const day1 = [
 const day2 = [
   { time: '06:00', title: '朝焼けモーニング', desc: '太平洋の朝日とともに', icon: '🌅' },
   { time: '08:00', title: 'モーニングライド', desc: '海沿いサイクリング', icon: '🚴' },
-  { time: '09:00', title: 'ツールド福島 Day2', desc: 'レース観戦', icon: '🏁' },
+  { time: '09:00', title: 'ツール・ド・ふくしま Day2', desc: 'レース観戦', icon: '🏁' },
   { time: '10:00', title: 'キッズサイクルスクール', desc: 'お子さま向け自転車教室', icon: '👶' },
   { time: '10:00', title: 'EXHIBITION OPEN', desc: '出展ブース最終日', icon: '🎪' },
   { time: '11:00', title: 'ワンバーナークッキング', desc: '別メニューで再開催', icon: '🍳' },
@@ -37,7 +37,7 @@ const day2 = [
       <p class="tt-lead">2日間のスケジュール</p>
     </div>
 
-    <p class="tt-coming-soon reveal">詳細が決まり次第おしらせします</p>
+    <h3 class="tt-coming-soon reveal">詳細が決まり次第おしらせします</h3>
 
     <!-- timetable columns (hidden until details are confirmed)
     <div class="tt-columns">
@@ -242,7 +242,9 @@ const day2 = [
   .tt-coming-soon {
     text-align: center;
     padding: 3rem 1rem;
-    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 700;
     color: var(--color-gray-400);
     letter-spacing: 0.05em;
   }

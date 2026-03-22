@@ -86,10 +86,10 @@ export const mockNews = [
   },
   {
     _id: '3',
-    title: 'ツールド福島との同時開催が決定',
+    title: 'ツール・ド・ふくしまとの同時開催が決定',
     slug: { current: 'tour-de-fukushima-collaboration' },
     date: '2026-02-20',
-    excerpt: 'ツールド福島との同時開催により、楢葉町をサイクリストの聖地として盛り上げます。',
+    excerpt: 'ツール・ド・ふくしまとの同時開催により、楢葉町をサイクリストの聖地として盛り上げます。',
     imageUrl: null,
   },
 ];
