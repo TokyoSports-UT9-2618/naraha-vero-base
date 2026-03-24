@@ -38,9 +38,10 @@ function blocksToText(blocks: any[]): string {
 const contentText = article.content ? blocksToText(article.content) : article.excerpt || '';
 ---
 
-<Layout 
-  title={`${article.title} | NARAHA VERO BASE`} 
+<Layout
+  title={`${article.title} | NARAHA VERO BASE`}
   description={article.excerpt || ''}
+  ogImage={article.imageUrl || '/images/hero-sunset-cyclists.jpg'}
 >
   <article class="article-page section-padding">
     <div class="container">
