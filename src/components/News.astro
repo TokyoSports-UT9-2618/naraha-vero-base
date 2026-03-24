@@ -21,11 +21,11 @@ const usingSanity = !!sanityNews;
       {news.map((item: any, i: number) => (
         <a href={`/news/${item.slug?.current || item.slug}`} class={`news-card reveal delay-${(i + 1) * 100}`}>
           <div class="news-card-image">
-            {item.imageUrl ? (
+            {item.imageUrl && !item.imageUrl.endsWith('.svg') ? (
               <img src={item.imageUrl} alt={item.title} loading="lazy" class="news-img" />
             ) : (
               <div class="news-image-placeholder">
-                <img src="/images/nvb-logo.svg" alt="NARAHA VERO BASE" class="news-placeholder-logo" />
+                <img src={item.imageUrl || '/images/nvb-logo.svg'} alt="NARAHA VERO BASE" class="news-placeholder-logo" />
               </div>
             )}
             <div class="news-date-badge">
