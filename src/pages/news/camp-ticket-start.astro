@@ -1,0 +1,305 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const article = {
+  title: '宿泊キャンプチケット予約受付開始！ 4月1日スタート',
+  date: '2026-04-01',
+  excerpt: 'NARAHA VERO BASE 2026の宿泊キャンプチケット予約が4月1日からスタート。天神岬スポーツ公園で過ごす特別な2日間を、今すぐご予約ください。',
+  imageUrl: '/images/news-camp-ticket.jpg',
+};
+---
+
+<Layout
+  title={`${article.title} | NARAHA VERO BASE`}
+  description={article.excerpt}
+  ogImage={article.imageUrl}
+>
+  <article class="article-page section-padding">
+    <div class="container">
+      <div class="article-header">
+        <a href="/#news" class="back-link">&larr; ニュース一覧に戻る</a>
+
+        <time class="article-date" datetime={article.date}>
+          {new Date(article.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+
+        <h1 class="article-title">{article.title}</h1>
+      </div>
+
+      <div class="article-hero-image">
+        <img src={article.imageUrl} alt="天神岬スポーツ公園の空撮写真" />
+      </div>
+
+      <div class="article-content">
+        <p>
+          NARAHA VERO BASE 2026 の宿泊キャンプチケットの予約受付が、いよいよ<strong>4月1日</strong>からスタートします。
+        </p>
+
+        <p>
+          福島県楢葉町・天神岬スポーツ公園で開催される、「自転車 x キャンプ」旅フェスティバル。太平洋を一望する絶景の高台で、焚き火トークや打ち上げ花火大会、露天風呂付きの温泉（大会期間中無料）など、泊まった人だけが味わえる特別な体験が待っています。
+        </p>
+
+        <h2>開催概要</h2>
+
+        <div class="info-table">
+          <dl>
+            <div class="info-row">
+              <dt>開催日程</dt>
+              <dd>2026年6月13日（土）〜 14日（日）</dd>
+            </div>
+            <div class="info-row">
+              <dt>会場</dt>
+              <dd>天神岬スポーツ公園キャンプ場（福島県楢葉町）</dd>
+            </div>
+            <div class="info-row">
+              <dt>主催</dt>
+              <dd>楢葉町</dd>
+            </div>
+            <div class="info-row">
+              <dt>共催</dt>
+              <dd>福島民報社</dd>
+            </div>
+            <div class="info-row">
+              <dt>運営</dt>
+              <dd>一般社団法人自転車キャンプツーリズム協会</dd>
+            </div>
+            <div class="info-row">
+              <dt>入場料</dt>
+              <dd>無料（宿泊キャンプは本チケットが必要です）</dd>
+            </div>
+          </dl>
+        </div>
+
+        <p>
+          チケットは数量限定です。過去のイベントでは即完売の実績も多数ありますので、お早めのチェックをおすすめします。
+        </p>
+
+        <div class="article-cta">
+          <a href="https://select-type.com/ev/?ev=WMSza2cQpKQ" target="_blank" rel="noopener noreferrer" class="cta-button">
+            <span class="cta-icon">&#x26FA;</span>
+            宿泊キャンプチケットを予約する
+          </a>
+        </div>
+
+        <p class="note">
+          ※ 出展をご希望の企業・団体の方は<a href="https://select-type.com/ev/?ev=nyKigfrgODM" target="_blank" rel="noopener noreferrer">こちらの出展申込フォーム</a>からお申し込みください。
+        </p>
+      </div>
+
+      <div class="article-footer">
+        <a href="/#news" class="btn-outline">ニュース一覧に戻る</a>
+        <a href="/" class="btn-outline-ghost">トップページへ</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .article-page {
+    background: var(--color-sand);
+    min-height: 80vh;
+    padding-top: 8rem;
+  }
+
+  .article-header {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+
+  .back-link:hover {
+    color: var(--color-sunset);
+  }
+
+  .article-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-gray-400);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--color-dark);
+    line-height: 1.5;
+  }
+
+  .article-hero-image {
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .article-hero-image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+  }
+
+  .article-content p {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content strong {
+    color: var(--color-sunset);
+    font-weight: 700;
+  }
+
+  .article-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-sunset);
+  }
+
+  .info-table {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-table dl {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-gray-100);
+    font-size: 0.9rem;
+  }
+
+  .info-row:last-child {
+    border-bottom: none;
+  }
+
+  .info-row dt {
+    flex-shrink: 0;
+    width: 5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+  }
+
+  .info-row dd {
+    color: var(--color-gray-600);
+  }
+
+  .article-cta {
+    text-align: center;
+    margin: 2.5rem 0;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-sunset), var(--color-coral));
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35);
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 53, 0.45);
+  }
+
+  .cta-icon {
+    font-size: 1.2rem;
+  }
+
+  .note {
+    font-size: 0.85rem !important;
+    color: var(--color-gray-400) !important;
+  }
+
+  .note a {
+    color: var(--color-ocean);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .note a:hover {
+    color: var(--color-sunset);
+  }
+
+  .article-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray-200);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid var(--color-sunset);
+    color: var(--color-sunset);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--color-sunset);
+    color: var(--color-white);
+  }
+
+  .btn-outline-ghost {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid var(--color-gray-300);
+    color: var(--color-gray-500);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-ghost:hover {
+    border-color: var(--color-gray-500);
+    color: var(--color-dark);
+  }
+</style>

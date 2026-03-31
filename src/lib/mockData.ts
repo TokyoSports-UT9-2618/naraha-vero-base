@@ -1,6 +1,14 @@
 // フォールバック用のモックデータ（Sanity APIが利用できない場合に使用）
 export const mockNews = [
   {
+    _id: '4',
+    title: '宿泊キャンプチケット予約受付開始！ 4月1日スタート',
+    slug: { current: 'camp-ticket-start' },
+    date: '2026-04-01',
+    excerpt: 'NARAHA VERO BASE 2026の宿泊キャンプチケット予約が4月1日からスタート。数量限定のため、お早めにご予約ください。',
+    imageUrl: '/images/news-camp-ticket.jpg',
+  },
+  {
     _id: '1',
     title: 'NARAHA VERO BASE 2026 開催決定！',
     slug: { current: 'naraha-vero-base-2026' },

@@ -14,10 +14,15 @@ export async function getStaticPaths() {
   // モックデータにフォールバック
   const allNews = news || mockNews;
 
-  return allNews.map((item: any) => ({
-    params: { slug: item.slug?.current || item.slug },
-    props: { article: item },
-  }));
+  // 静的ページとして個別に作成済みのslugを除外
+  const staticPages = ['camp-ticket-start'];
+
+  return allNews
+    .filter((item: any) => !staticPages.includes(item.slug?.current || item.slug))
+    .map((item: any) => ({
+      params: { slug: item.slug?.current || item.slug },
+      props: { article: item },
+    }));
 }
 
 const { article } = Astro.props;
