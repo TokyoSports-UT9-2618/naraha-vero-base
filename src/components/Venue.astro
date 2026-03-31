@@ -13,12 +13,17 @@ const highlights = [
   {
     photo: '/images/venue-facilities.jpg',
     title: '周辺施設も充実',
-    desc: '温泉、道の駅、地元グルメ。楢葉の魅力を存分に味わえる環境が整っています。',
+    desc: '敷地内の温浴施設は大会期間中無料で利用可能。道の駅や地元グルメも楽しめます。',
   },
   {
     photo: '/images/venue-cycling.jpg',
     title: 'ツール・ド・ふくしま連携',
     desc: '同時開催の「ツール・ド・ふくしま」と連携し、楢葉町をサイクリストの聖地に。',
+  },
+  {
+    photo: '/images/venue-bonfire-night.jpg',
+    title: '焚き火トーク × 花火',
+    desc: '夜は焚き火を囲んだトークショーを開催。そしてクライマックスには花火が夜空を彩ります。泊まった人だけの特別な時間。',
   },
 ];
 ---
@@ -41,7 +46,7 @@ const highlights = [
     <div class="venue-map-container reveal">
       <div class="venue-map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.1223582359244!2d141.01499909999998!3d37.268525499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602121004093f839%3A0x2c6abc29b47a4cca!2z5aSp56We5bKs44K544Od44O844OE5YWs5ZySIOOCquODvOODiOOCreODo-ODs-ODl-WgtA!5e0!3m2!1sja!2sjp!4v1774165743951!5m2!1sja!2sjp"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.0!2d141.015!3d37.2685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60212107de83cbc1%3A0x8c6e88a3a498c54f!2z5aSp56We5bKs44K544Od44O844OE5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1774165743951!5m2!1sja!2sjp"
           width="100%"
           height="400"
           style="border:0;"
@@ -58,7 +63,13 @@ const highlights = [
       {highlights.map((h, i) => (
         <div class={`highlight-card reveal delay-${(i + 1) * 100}`}>
           <div class="highlight-photo-wrap">
-            <img src={h.photo} alt={h.title} class="highlight-photo" loading="lazy" />
+            {h.photo ? (
+              <img src={h.photo} alt={h.title} class="highlight-photo" loading="lazy" />
+            ) : (
+              <div class="highlight-emoji-placeholder">
+                <span>{h.emoji}</span>
+              </div>
+            )}
           </div>
           <div class="highlight-body">
             <h3 class="highlight-title">{h.title}</h3>
@@ -131,29 +142,6 @@ const highlights = [
   .venue-header {
     text-align: center;
     margin-bottom: 3rem;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: var(--color-sunset);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .section-label::before,
-  .section-label::after {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 1px;
-    background: var(--color-sunset);
-    vertical-align: middle;
-    margin: 0 1rem;
-    opacity: 0.5;
   }
 
   .venue-title {
@@ -232,6 +220,26 @@ const highlights = [
 
   .highlight-card:hover .highlight-photo {
     transform: scale(1.05);
+  }
+
+  .highlight-emoji-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .highlight-emoji-placeholder span {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 12px rgba(255, 200, 50, 0.6));
+    animation: emoji-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes emoji-glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
   }
 
   .highlight-body {

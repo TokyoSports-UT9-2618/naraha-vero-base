@@ -25,8 +25,14 @@ const currentYear = new Date().getFullYear();
           <h3 class="footer-heading">開催情報</h3>
           <ul class="footer-list">
             <li>📅 2026年6月13日(土)・14日(日)</li>
-            <li>📍 福島県楢葉町 天神岬スポーツ公園</li>
+            <li>📍 天神岬スポーツ公園キャンプ場（福島県楢葉町）</li>
+            <li>🎟️ 入場無料（宿泊キャンプは要チケット）</li>
           </ul>
+          <div class="footer-org-details">
+            <p>主催：楢葉町</p>
+            <p>共催：福島民報社</p>
+            <p>運営：一般社団法人自転車キャンプツーリズム協会</p>
+          </div>
         </div>
 
         <!-- Links -->
@@ -47,7 +53,7 @@ const currentYear = new Date().getFullYear();
         <div class="footer-section">
           <h3 class="footer-heading">チケット・出展</h3>
           <div class="footer-buttons">
-            <span class="footer-btn-primary">⛺ 4/1から予約スタート</span>
+            <a href="https://select-type.com/ev/?ev=WMSza2cQpKQ" target="_blank" rel="noopener noreferrer" class="footer-btn-primary">⛺ 宿泊予約はこちらから</a>
             <a href="https://select-type.com/ev/?ev=nyKigfrgODM" target="_blank" rel="noopener noreferrer" class="footer-btn-secondary">
               🏢 ご出展希望の方はこちらから
             </a>
@@ -57,7 +63,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- Organizer -->
       <div class="footer-organizer">
-        <p>主催: 一般社団法人自転車キャンプツーリズム協会（BIKE&CAMP TOURISM ASSOCIATION）</p>
+        <p>主催: 楢葉町 ／ 共催: 福島民報社 ／ 運営: 一般社団法人自転車キャンプツーリズム協会</p>
       </div>
 
       <div class="footer-bottom">
@@ -142,6 +148,17 @@ const currentYear = new Date().getFullYear();
     flex-direction: column;
     gap: 0.75rem;
     font-size: 0.85rem;
+  }
+
+  .footer-org-details {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 
   .footer-link {

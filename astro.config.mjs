@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://naraha-vero-base.pages.dev',
+  site: 'https://naraha.velo-base.com',
   output: 'static',
 
   vite: {
