@@ -1,9 +1,22 @@
 ---
 import { getLatestNews, mockNews } from '../lib/sanity';
 
+// 静的ページとして作成した記事（Sanityを経由しない）
+const staticNews = [
+  {
+    _id: 'static-camp-ticket',
+    title: '宿泊キャンプチケット予約受付開始！ 4月1日スタート',
+    slug: { current: 'camp-ticket-start' },
+    date: '2026-04-01',
+    excerpt: 'NARAHA VERO BASE 2026の宿泊キャンプチケット予約が4月1日からスタート。数量限定のため、お早めにご予約ください。',
+    imageUrl: '/images/news-camp-ticket.jpg',
+  },
+];
+
 // Sanity APIから取得を試み、失敗時はモックデータを使用
 const sanityNews = await getLatestNews();
-const news = sanityNews || mockNews;
+const baseNews = sanityNews || mockNews;
+const news = [...staticNews, ...baseNews].slice(0, 3);
 const usingSanity = !!sanityNews;
 ---
 
